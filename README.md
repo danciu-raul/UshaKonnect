@@ -19,17 +19,15 @@ cd your-repo-name
 ```
 ```
 
-python3 -m venv venv
-
 ```
+python3 -m venv venv
 ```
 
 2. Activate the virtual environment:
 
 ```
-```
-
 source venv/bin/activate
+```
 
 ```
 ```
@@ -39,31 +37,19 @@ source venv/bin/activate
 1. Create a virtual environment:
 
 ```
-```
-
 python -m venv venv
-
-```
 ```
 
 2. Activate the virtual environment:
 
 ```
-```
-
 venv\Scripts\activate
-
-```
 ```
 
 ### 3. Install Dependencies
 
 ```
-```
-
 pip install -r requirements.txt
-
-```
 ```
 
 ### 4. Run the Application
