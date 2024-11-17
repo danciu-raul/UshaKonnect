@@ -17,9 +17,6 @@ cd your-repo-name
 1. Create a virtual environment:
 
 ```
-```
-
-```
 python3 -m venv venv
 ```
 
@@ -27,9 +24,6 @@ python3 -m venv venv
 
 ```
 source venv/bin/activate
-```
-
-```
 ```
 
 ***Windows***:
