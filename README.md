@@ -48,4 +48,4 @@ pip install -r requirements.txt
 
 ### 4. Run the Application
 
-python app.py or python3 app.py
+python init.py or python3 init.py
