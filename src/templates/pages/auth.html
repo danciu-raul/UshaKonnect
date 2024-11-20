@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+    <title>Sign In</title>
+</head>
+<body>
+ <img src="{{ url_for('static', filename='images/UshaKonnect.png') }}" alt="Logo" class="logo">
+    <div class="container">
+        <div class="signin">
+            <h1>Sign In</h1>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <a href="#" class="forgot-password">Forget your password?</a>
+            <button class="signin-button">SIGN IN</button>
+        </div>
+        <div class="signup">
+            <h2>Hello!</h2>
+            <p>If you are not already registered, create an account here.</p>
+            <button class="signup-button" onclick="toggleSignUp()" >SIGN UP</button>
+            <script src="../../static/js/slide.js"></script>
+        </div>
+    </div>
+</body>
+</html>
