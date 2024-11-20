@@ -1,0 +1,115 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom left, rgba(0, 0, 0, 1) 10%, rgba(198, 153, 7, 0.8109) 53%, rgba(0, 0, 0, 0.67) 86%),
+    linear-gradient(to top right, rgba(0, 0, 0, 1) 10%, rgba(198, 153, 7, 0.8109) 53%, rgba(0, 0, 0, 0.67) 86%);
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    width: 70px;
+    height: auto;
+}
+
+.container {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.01);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 800px;
+    height: 500px;
+}
+
+.signin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    flex: 1;
+}
+
+.signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-top-left-radius: 70px;
+    border-bottom-left-radius: 70px;
+}
+
+h1 {
+    margin: 0 0 50px;
+    color: rgb(255,255,255);
+    font-size: 40px;
+}
+
+h2 {
+    margin: 0 0 1px;
+    color: rgb(9,9,9);
+    font-size: 40px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 20px;
+    background: rgba(217, 217, 217, 0.7);
+}
+
+.forgot-password {
+    display: block;
+    margin: 10px 0;
+    color: rgb(255,255,255);
+    text-decoration: none;
+}
+
+.signin-button {
+    width: 132px;
+    height: 40px;
+    background-color: transparent;
+    color: white;
+    border: 3px solid white;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    align-items: center;
+    font-weight: bold;
+}
+
+.signup-button {
+    width: 132px;
+    height: 40px;
+    background-color: transparent;
+    color: black;
+    border: 3px solid black;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    align-items: center;
+    font-weight: bold;  
+}
+
+.signup p {
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
+}
+
