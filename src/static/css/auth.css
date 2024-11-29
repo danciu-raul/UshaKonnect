@@ -9,11 +9,17 @@ body {
     margin: 0;
 }
 
+.nav {
+  height: 60px;
+  width: 100vw;
+  background: rgb(9,9,9);
+}
+
 .logo {
     position: absolute;
     top: 20px;
     left: 40px;
-    width: 70px;
+    width: 10px;
     height: auto;
 }
 
