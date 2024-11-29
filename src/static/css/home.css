@@ -1,0 +1,271 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom left, rgba(0, 0, 0, 1) 10%, rgba(198, 153, 7, 0.8109) 53%, rgba(0, 0, 0, 0.67) 86%),
+  linear-gradient(to top right, rgba(0, 0, 0, 1) 10%, rgba(198, 153, 7, 0.8109) 53%, rgba(0, 0, 0, 0.67) 86%);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.logo {
+  top: 20px;
+  left: 40px;
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.notif{
+  color: white;
+  top: 20px;
+  width: 20px;
+  height: auto;
+  margin-right: 30px;
+}
+
+.logout {
+  color: white;
+  top: 20px;
+  width: 20px;
+  height: auto;
+}
+
+.nav-icons {
+  margin-left: auto;
+  margin-right: 80px;
+}
+
+.details-logo {
+  width: 30px;
+  height: auto;
+}
+
+.eur {
+  margin-left:auto;
+  color: #888;
+  font-size: 12px;
+}
+
+.top-details {
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+  margin-bottom: 60px;
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 30px;
+  margin-bottom: 20px;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.navbar-name {
+  color: white;
+  font-size: 18px;
+  margin: 0;
+}
+
+.mycard {
+  width: 105%;
+  height: 40%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px auto;
+}
+
+.mycardH1 {
+  font-size: 36px;
+  color: #fff;
+  font-weight: 100;
+}
+
+.add-card {
+  background-color: transparent;
+  border: 3px solid white;
+  height: 35px;
+  width: 160px;
+  border-radius: 20px;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: auto;
+  font-size: 10px;
+  color: white;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 200px;
+  margin-top: 20px;
+}
+
+.card-section {
+  width: 30%;
+  height: 90%;
+}
+
+.right-side {
+  width:30%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content:center;
+}
+
+.transaction-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+.btn-transaction {
+  background-color: transparent;
+  border: 2px solid white;
+  transition: border-color 0.3s ease;
+  height: 35px;
+  width: 140px;
+  border-radius: 20px;
+  align-items: center;
+  font-weight: 100;
+  cursor: pointer;
+  font-size: 12px;
+  color: white;
+}
+
+.btn-stat {
+  background-color: transparent;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+  height: 35px;
+  width: 140px;
+  border-radius: 20px;
+  align-items: center;
+  font-weight: 100;
+  cursor: pointer;
+  font-size: 12px;
+  color: white;
+}
+
+.transactions {
+  width: 100%;
+  margin-left: 20px;
+  background-color: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.statistics {
+  width: 100%;
+  margin-left: 20px;
+  background-color: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.amount {
+  font-weight: bold;
+}
+
+.negative {
+  color: red;
+}
+
+.positive {
+  color: green;
+}
+
+.card {
+  background-color: rgb(46,46,46);
+  border-radius: 10px;
+  height: 250px;
+  padding: 5px 20px 5px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-details {
+  text-align: left;
+}
+
+.balance {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+
+.card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.card-number {
+  font-size: 22px;
+  margin: 2px 0;
+}
+
+.expiry {
+  font-size: 14px;
+  color: #888;
+}
+
+.bank-name {
+  font-size: 14px;
+  color: #888;
+}
+
+.transfer-funds {
+  width: 100%;
+  background-color: rgb(62,61,61);
+  color: white;
+  border: none;
+  height: 100px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-top: 30px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+
+
+

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cards - UshaKonnect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+          <img src="{{ url_for('static', filename='images/UshaKonnect.png') }}" alt="Logo" class="logo">
+          <h1 class="navbar-name">UshaKonnect</h1>
+          <div class="nav-icons">
+            <img src="{{ url_for('static', filename='images/notification.png') }}" alt="Logo" class="notif">
+            <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logo" class="logout">
+          </div>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="card-section">
+            <div class="mycard">
+                <h1 class="mycardH1">My cards</h1>
+                <button class="add-card">Add new Card</button>
+            </div>
+
+            <div class="card">
+                <div class="card-details">
+                    <div class ="top-details">
+                      <img src="{{ url_for('static', filename='images/UshaKonnect.png') }}" alt="Logo" class="details-logo">
+                      <p class="eur">EUR</p>
+                    </div>
+                    <p class="card-number">0254 6789 4567 1234</p>
+                    <p class="expiry">04/26</p>
+                    <div class="card-info">
+                        <p class="balance">23,598€</p>
+                        <p class="bank-name">UshaKonnect</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="transfer-funds">Transfer funds</button>
+        </div>
+
+        <div class="right-side">
+            <div class="transaction-buttons">
+                <button class="btn-transaction" onclick="handleTransactionClick()">Transactions</button>
+                <button class="btn-stat" onclick="handleStatClick()">Statistics</button>
+            </div>
+
+            <div class="transactions">
+                <div class="transaction-list">
+                    <div class="transaction today">
+                        <span>4 March</span>
+                        <span>10:54</span>
+                        <span>Amazon</span>
+                        <span class="amount negative">-50€</span>
+                    </div>
+                    <div class="transaction today">
+                        <span>4 March</span>
+                        <span>10:54</span>
+                        <span>Amazon</span>
+                        <span class="amount negative">-50€</span>
+                    </div>
+                    <div class="transaction today">
+                        <span>4 March</span>
+                        <span>10:54</span>
+                        <span>Amazon</span>
+                        <span class="amount negative">-50€</span>
+                    </div>
+                    <div class="transaction">
+                        <span>3 March</span>
+                        <span>10:54</span>
+                        <span>Amazon</span>
+                        <span class="amount negative">-50€</span>
+                    </div>
+                    <div class="transaction">
+                        <span>3 March</span>
+                        <span>10:54</span>
+                        <span>Mom</span>
+                        <span class="amount positive">+100€</span>
+                    </div>
+                    <div class="transaction">
+                        <span>3 March</span>
+                        <span>10:54</span>
+                        <span>Mom</span>
+                        <span class="amount positive">+100€</span>
+                    </div>
+                    <div class="transaction">
+                        <span>2 March</span>
+                        <span>10:54</span>
+                        <span>Amazon</span>
+                        <span class="amount negative">-50€</span>
+                    </div>
+                    <div class="transaction">
+                        <span>2 March</span>
+                        <span>10:54</span>
+                        <span>Amazon</span>
+                        <span class="amount negative">-50€</span>
+                    </div>
+                    <div class="transaction">
+                        <span>2 March</span>
+                        <span>10:54</span>
+                        <span>Ushakov</span>
+                        <span class="amount positive">+100€</span>
+                    </div>
+                    <div class="transaction">
+                        <span>1 March</span>
+                        <span>10:54</span>
+                        <span>Mom</span>
+                        <span class="amount positive">+100€</span>
+                    </div>
+                    <div class="transaction">
+                        <span>1 March</span>
+                        <span>10:54</span>
+                        <span>Mom</span>
+                        <span class="amount positive">+100€</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="statistics" id="statdiv" style="display: none;">
+              <h1>Some stats ...</h1>
+            </div>
+        </div>
+    </div>
+  <script src="../../static/js/homeAnimButton.js"></script>
+</body>
+</html>
