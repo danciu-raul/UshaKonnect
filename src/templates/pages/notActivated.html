@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Not Activated - UshaKonnect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/notActivated.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <img src="{{ url_for('static', filename='images/UshaKonnect.png') }}" alt="Logo" class="logo">
+            <h1 class="navbar-name">UshaKonnect</h1>
+            <div class="nav-icons">
+                <img src="{{ url_for('static', filename='images/notification.png') }}" alt="Notification" class="notif">
+                <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout">
+            </div>
+        </div>
+    </nav>
+    <div class="not-activated-container">
+        <div class="content-section">
+            <h1 class="title">Your account is not activated yet</h1>
+            <p class="subtitle">Fill in the required fields and submit them for verification</p>
+            <form class="form-section">
+                <div class="input-row">
+                    <input type="text" class="styled-input" placeholder="First name" required>
+                    <input type="text" class="styled-input" placeholder="Last name" required>
+                    <input type="date" class="styled-input" placeholder="Date of birth" required>
+
+                </div>
+                <div class="input-row">
+                    <input type="text" class="styled-input" placeholder="Country of residence" required>
+                    <input type="text" class="styled-input" placeholder="City" required>
+                    <input type="text" class="styled-input" placeholder="Street" required>
+                </div>
+                <div class="input-row">
+                    <input type="tel" class="styled-input" placeholder="Phone number" required>
+                    <input type="text" class="styled-input" placeholder="Marital status" required>
+                    <input type="number" class="styled-input" placeholder="Annual salary" required>
+                </div>
+                <button type="submit" class="styled-button">Submit data</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

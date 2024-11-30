@@ -14,5 +14,9 @@ def home():
 def admin():
     return render_template('pages/admin.html')
 
+@app.route('/notActivated')
+def notActivated():
+    return render_template('pages/notActivated.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

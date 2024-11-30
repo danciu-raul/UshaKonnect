@@ -1,0 +1,166 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom left, rgba(0, 0, 0, 1) 10%, rgba(198, 153, 7, 0.8109) 53%, rgba(0, 0, 0, 0.67) 86%),
+    linear-gradient(to top right, rgba(0, 0, 0, 1) 10%, rgba(198, 153, 7, 0.8109) 53%, rgba(0, 0, 0, 0.67) 86%);
+    color: white;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden; /* Remove scrollbars */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    top: 20px;
+    left: 40px;
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  .notif{
+    color: white;
+    top: 20px;
+    width: 20px;
+    height: auto;
+    margin-right: 30px;
+  }
+  
+  .logout {
+    color: white;
+    top: 20px;
+    width: 20px;
+    height: auto;
+  }
+  
+  .nav-icons {
+    margin-left: auto;
+    margin-right: 80px;
+  }
+  
+  .details-logo {
+    width: 30px;
+    height: auto;
+  }
+  
+  .eur {
+    margin-left:auto;
+    color: #888;
+    font-size: 12px;
+  }
+  
+  .top-details {
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    margin-bottom: 60px;
+  }
+  
+  .navbar {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .navbar-name {
+    color: white;
+    font-size: 18px;
+    margin: 0;
+  }
+.nav-icons img {
+    width: 20px;
+    height: auto;
+    margin-left: 20px;
+}
+
+.not-activated-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    height: calc(100vh - 50px); /* Adjusting for navbar height */
+}
+
+.content-section {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 50px; /* Increased padding for a larger area */
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 90%; /* Expanding content width */
+    max-width: 1200px; /* Increased max width */
+    height: auto;
+}
+
+.title {
+    font-size: 2.5rem; /* Made the title larger */
+    color: #FFD700;
+    margin-bottom: 30px;
+}
+
+.subtitle {
+    font-size: 1.5rem; /* Made the subtitle larger */
+    color: white;
+    margin-bottom: 30px;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px; /* Increased gap between input rows */
+}
+
+.input-row {
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* Increased spacing between inputs */
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.styled-input {
+    padding: 15px; /* Increased padding for larger input fields */
+    border-radius: 15px;
+    border: 2px solid #FFD700;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #FFF;
+    width: 300px; /* Increased width of input fields */
+    font-size: 16px; /* Made input text larger */
+    text-align: left;
+}
+
+.styled-button {
+    padding: 15px 30px; /* Matching button size from admin page */
+    font-size: 18px; /* Larger font size */
+    color: white;
+    background-color: transparent;
+    border: 2px solid #ffffff; /* Consistent border color */
+    border-radius: 30px; /* Rounded button */
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+.styled-button:hover {
+    background-color: #FFD700; /* Button hover effect matching admin page */
+    color: black;
+    transform: scale(1.05); /* Slight scaling on hover */
+}
+
+
