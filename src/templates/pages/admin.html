@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - UshaKonnect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <img src="{{ url_for('static', filename='images/UshaKonnect.png') }}" alt="Logo" class="logo">
+            <h1 class="navbar-name">UshaKonnect</h1>
+            <div class="nav-icons">
+                <img src="{{ url_for('static', filename='images/notification.png') }}" alt="Notification" class="notif">
+                <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout">
+            </div>
+        </div>
+    </nav>
+    <div class="admin-container full-screen">
+        <div class="header-info">
+            <h1 class="greeting">Hello, Admin!</h1>
+            <button class="info-button">View your information</button>
+        </div>
+        <p class="intro">To find a client, please type one of the following information:</p>
+        <div class="search-section">
+            <div class="input-group">
+                <h2>Find a physical person:</h2>
+                <input type="text" class="styled-input" placeholder="First Name">
+                <input type="text" class="styled-input" placeholder="Last Name">
+                <input type="text" class="styled-input" placeholder="Date of Birth">
+            </div>
+            <div class="input-group">
+                <h2>Find a person by a unique identifier:</h2>
+                <input type="text" class="styled-input" placeholder="Root">
+            </div>
+            <button class="info-button">SEARCH</button>
+        </div>
+    </div>
+</body>
+</html>

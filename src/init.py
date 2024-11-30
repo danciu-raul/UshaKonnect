@@ -10,5 +10,9 @@ def main():
 def home():
     return render_template('pages/home.html')
 
+@app.route('/admin')
+def admin():
+    return render_template('pages/admin.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
