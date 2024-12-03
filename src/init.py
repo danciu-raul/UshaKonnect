@@ -2,7 +2,6 @@ import os
 from flask import Flask, render_template
 from src.instance import db
 
-
 def create_app(test_config=None):
     # Create and configure the app
     app = Flask(__name__, instance_relative_config=True)
@@ -22,8 +21,9 @@ def create_app(test_config=None):
             print("Database initialized.")
 
     # Define routes
-    @app.route('/')
+    @app.route('/', methods=['GET', 'POST'])
     def main():
+        #login = LoginForm()
         return render_template('pages/auth.html')
 
     @app.route('/home')

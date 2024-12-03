@@ -23,7 +23,7 @@ body {
     height: auto;
 }
 
-.container {
+.loginContainer {
     display: flex;
     background-color: rgba(255, 255, 255, 0.01);
     border-radius: 20px;
@@ -33,7 +33,17 @@ body {
     height: 500px;
 }
 
-.signin {
+.signupContainer {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.01);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 800px;
+    height: 500px;
+}
+
+.signinL {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,7 +52,7 @@ body {
     flex: 1;
 }
 
-.signup {
+.signupL {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,6 +62,27 @@ body {
     background-color: rgba(255, 255, 255, 0.6);
     border-top-left-radius: 70px;
     border-bottom-left-radius: 70px;
+}
+
+.signinR {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    flex: 1;
+}
+
+.signupR {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-top-right-radius: 70px;
+    border-bottom-right-radius: 70px;
 }
 
 h1 {
@@ -95,6 +126,22 @@ input {
     transition: background-color 0.3s, color 0.3s;
     align-items: center;
     font-weight: bold;
+}
+
+.signin-buttonR {
+    width: 132px;
+    height: 40px;
+    background-color: transparent;
+    color: white;
+    border: 3px solid white;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    align-items: center;
+    font-weight: bold;
+    margin: 30px;
 }
 
 .signup-button {
