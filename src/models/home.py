@@ -7,6 +7,33 @@ def insertCard(expiration, card_number, balance, user_id):
     db.execute('INSERT INTO cards (expiration, card_number, balance, user_id) VALUES (?, ?, ?, ?)', (expiration, card_number, balance, user_id))
     db.commit()
 
+def updateBalance(card_id, amount, balance):
+    db = get_db()
+    firstChar = amount[0]
+    rest = amount[1:]
+    
+    floatBalance = float(balance)
+    toChangeValue = float(rest)
+
+
+    if firstChar == '+':
+        new = floatBalance + toChangeValue
+        value = str(new)
+        db.execute(
+            'UPDATE cards SET balance = ? WHERE id = ?',
+            (value, card_id)
+        )
+    else:
+        new = floatBalance - toChangeValue
+        value = str(new)
+        db.execute(
+            'UPDATE cards SET balance = ? WHERE id = ?',
+            (value, card_id)
+        )
+
+    db.commit()
+
+
 #
 # def getCards(user_id):
 #     db = get_db()

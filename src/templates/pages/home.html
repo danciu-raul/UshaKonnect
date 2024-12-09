@@ -41,7 +41,24 @@
                 </div>
             </div>
 
-            <button class="transfer-funds">Transfer funds</button>
+            <button class="transfer-funds">Transfer Funds</button>
+            <button class="transfer-funds" onclick="handleMenu()">Add Transaction</button>
+        </div>
+
+        <div id="popupMenu" class="popup-menu">
+            <button id="closeMenuBtn" onclick="handleCloseMenu()">Close</button>
+            <form action="/home" method="POST" id="inputs">
+                <input name="name" type="text" placeholder="From/To" required>
+                <div class="dates">
+                    <input name="date" class="date" type="date">
+                    <input name="time" class="time" type="time">
+              </div>
+              <input name="amount" type="text" placeholder="+/-50">
+              <input type="hidden" name="form_type" value="transaction">
+              <div class="submit">
+                  <button id="sendBtn">Submit</button>
+              </div>
+            </form>
         </div>
 
         <div class="right-side">
@@ -52,7 +69,7 @@
             
             <div class="transactions">
                 <div class="transaction-list">
-                    {% for transaction in transactions %}
+                    {% for transaction in transactions | reverse %}
                     <div class="transaction {% if loop.index == 1 %}today{% endif %}">
                         <span>{{ transaction['execution_date'] }}</span>
                         <span>{{ transaction['execution_hour'] }}</span>

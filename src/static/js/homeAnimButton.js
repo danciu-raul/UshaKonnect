@@ -27,3 +27,15 @@ function handleStatClick() {
   transButton.style.border = '2px solid transparent';
   statButton.style.border = '2px solid white';
 }
+
+function handleMenu() {
+  const menu = document.querySelector('.popup-menu');
+
+  menu.style.display = 'block';
+}
+
+function handleCloseMenu() {
+  const menu = document.querySelector('.popup-menu');
+
+  menu.style.display = 'none'
+}
