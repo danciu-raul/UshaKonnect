@@ -32,10 +32,10 @@
                       <img src="{{ url_for('static', filename='images/UshaKonnect.png') }}" alt="Logo" class="details-logo">
                       <p class="eur">EUR</p>
                     </div>
-                    <p class="card-number">0254 6789 4567 1234</p>
-                    <p class="expiry">04/26</p>
+                    <p class="card-number">{{ cardNumber }}</p> 
+                    <p class="expiry">{{ expiration }}</p>
                     <div class="card-info">
-                        <p class="balance">23,598€</p>
+                        <p class="balance">{{ balance }}€</p>
                         <p class="bank-name">UshaKonnect</p>
                     </div>
                 </div>
@@ -49,78 +49,20 @@
                 <button class="btn-transaction" onclick="handleTransactionClick()">Transactions</button>
                 <button class="btn-stat" onclick="handleStatClick()">Statistics</button>
             </div>
-
+            
             <div class="transactions">
                 <div class="transaction-list">
-                    <div class="transaction today">
-                        <span>4 March</span>
-                        <span>10:54</span>
-                        <span>Amazon</span>
-                        <span class="amount negative">-50€</span>
-                    </div>
-                    <div class="transaction today">
-                        <span>4 March</span>
-                        <span>10:54</span>
-                        <span>Amazon</span>
-                        <span class="amount negative">-50€</span>
-                    </div>
-                    <div class="transaction today">
-                        <span>4 March</span>
-                        <span>10:54</span>
-                        <span>Amazon</span>
-                        <span class="amount negative">-50€</span>
-                    </div>
-                    <div class="transaction">
-                        <span>3 March</span>
-                        <span>10:54</span>
-                        <span>Amazon</span>
-                        <span class="amount negative">-50€</span>
-                    </div>
-                    <div class="transaction">
-                        <span>3 March</span>
-                        <span>10:54</span>
-                        <span>Mom</span>
-                        <span class="amount positive">+100€</span>
-                    </div>
-                    <div class="transaction">
-                        <span>3 March</span>
-                        <span>10:54</span>
-                        <span>Mom</span>
-                        <span class="amount positive">+100€</span>
-                    </div>
-                    <div class="transaction">
-                        <span>2 March</span>
-                        <span>10:54</span>
-                        <span>Amazon</span>
-                        <span class="amount negative">-50€</span>
-                    </div>
-                    <div class="transaction">
-                        <span>2 March</span>
-                        <span>10:54</span>
-                        <span>Amazon</span>
-                        <span class="amount negative">-50€</span>
-                    </div>
-                    <div class="transaction">
-                        <span>2 March</span>
-                        <span>10:54</span>
-                        <span>Ushakov</span>
-                        <span class="amount positive">+100€</span>
-                    </div>
-                    <div class="transaction">
-                        <span>1 March</span>
-                        <span>10:54</span>
-                        <span>Mom</span>
-                        <span class="amount positive">+100€</span>
-                    </div>
-                    <div class="transaction">
-                        <span>1 March</span>
-                        <span>10:54</span>
-                        <span>Mom</span>
-                        <span class="amount positive">+100€</span>
-                    </div>
-                </div>
+                    {% for transaction in transactions %}
+                    <div class="transaction {% if loop.index == 1 %}today{% endif %}">
+                        <span>{{ transaction['execution_date'] }}</span>
+                        <span>{{ transaction['execution_hour'] }}</span>
+                        <span>{{ transaction['destination'] }}</span>
+                        <span class="amount {% if transaction['amount'].startswith('-') %}negative{% else %}positive{% endif %}">{{ transaction['amount'] }}</span>
+                  </div>
+                {% endfor %}
+              </div>
             </div>
-            
+                       
             <div class="statistics" id="statdiv" style="display: none;">
               <h1>Some stats ...</h1>
             </div>

@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS history (
   execution_date DATE,
   execution_hour TEXT,
   destination TEXT,
-  amount INTEGER,
+  amount TEXT,
   card_id INTEGER NOT NULL,
   FOREIGN KEY (card_id) REFERENCES cards(id)
 );
