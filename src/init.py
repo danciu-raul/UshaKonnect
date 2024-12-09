@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, flash, redirect, url_for, ses
 from src.instance import db
 from src.models.register import insertUser, getUserByEmail, checkIfUserAlreadyExists
 from src.models.login import isUserRegistered
-from src.models.home import getHistoryByCardId, insertCard, insertHistory, getUserId, getCardNumber, getBalance, getExpiration, getCardId
+from src.models.home import getHistoryByCardId, insertCard, insertHistory, getUserId, getCardNumber, getBalance, getExpiration, getCardId, updateBalance
 
 def create_app(test_config=None):
     # Create and configure the app
@@ -33,8 +33,6 @@ def create_app(test_config=None):
         if form_type == 'sign_in':
             email = request.form.get('loginEmail')
             password = request.form.get('loginPassword')
-            print(email)
-            print(password)
             isRegistered = isUserRegistered(email, password)
             if isRegistered == True:
                 userId = getUserId(email, password)
@@ -65,22 +63,46 @@ def create_app(test_config=None):
             flash('Invalid form submission', category='error')
         
         return render_template('pages/auth.html')
+    
 
-    @app.route('/home')
+    @app.route('/home', methods=['GET', 'POST'])
     def home():
-        userId = session.get('userId')
+        userId = session.get('userId')  # Get userId from session
+        if userId is None:
+            return redirect(url_for('auth'))
 
-        if userId is not None:
-            cardNumber = getCardNumber(userId)
-            expiration = getExpiration(userId)
-            balance = getBalance(userId)
-            cardId = getCardId(userId)
-            history = getHistoryByCardId(cardId)
-            transactions = history.fetchall()
-            print(transactions)
-            return render_template('pages/home.html', cardNumber=cardNumber, expiration=expiration, balance=balance, transactions=transactions)
-        else:
-            return render_template('pages/homes.html')
+        cardNumber = getCardNumber(userId)
+        expiration = getExpiration(userId)
+        balance = getBalance(userId)
+        cardId = getCardId(userId)
+
+        if request.method == 'POST':
+            form_type = request.form.get('form_type')
+
+            if form_type == 'transaction':
+                name = request.form.get('name')
+                date = request.form.get('date')
+                time = request.form.get('time')
+                amount = request.form.get('amount')
+
+                # Validate required fields
+                if not (name and date and time and amount):
+                    flash("All fields are required for a transaction.", category="error")
+                else:
+                    insertHistory(date, time, name, amount, cardId)
+                    balance = updateBalance(cardId, amount, balance)
+
+        balance = getBalance(userId)
+        history = getHistoryByCardId(cardId)
+        transactions = history.fetchall()
+
+        return render_template(
+            'pages/home.html',
+            cardNumber=cardNumber,
+            expiration=expiration,
+            balance=balance,
+            transactions=transactions
+        )
 
     @app.route('/admin')
     def admin():

@@ -266,6 +266,78 @@ body {
   font-weight: 700;
 }
 
+.popup-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 30%;
+    width: 30%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255,255,255, 0.5);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+    z-index: 9999;
+}
 
+#closeMenuBtn {
+    float: right;
+    background-color: red;
+    border-radius: 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    height: 30px;
+}
+
+.submit {
+    display: flex;
+    justify-content:center;
+    align-items: flex-end;
+    padding: 5px 10px;
+}
+
+#sendBtn {
+    background-color: green;
+    border-radius: 20px;
+    color: white;
+    border: none;
+    margin-top: 15px;
+    width: 20%;
+    height: 30px;
+}
+
+.dates {
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  padding-top: 20px;
+  padding-bottom:20px;:
+}
+
+.date {
+  width: 40%;
+}
+
+.time {
+  width: 40%;
+  float: right;
+  margin-right: 5px;
+}
+
+#inputs {
+  margin-top:15%;
+}
+
+input {
+    width: 95%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(217, 217, 217, 0.7);
+}
 
 
