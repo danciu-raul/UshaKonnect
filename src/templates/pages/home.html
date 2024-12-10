@@ -15,7 +15,7 @@
           <h1 class="navbar-name">UshaKonnect</h1>
           <div class="nav-icons">
             <img src="{{ url_for('static', filename='images/notification.png') }}" alt="Logo" class="notif" onclick="window.location.href='{{ url_for('notActivated') }}'">
-            <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logo" class="logout">
+            <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logo" class="logout" onclick="window.location.href='{{ url_for('logout') }}'">
           </div>
         </div>
     </nav>

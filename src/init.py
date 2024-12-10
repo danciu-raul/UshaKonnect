@@ -108,6 +108,11 @@ def create_app(test_config=None):
     def admin():
         return render_template('pages/admin.html')
 
+    @app.route('/logout')
+    def logout():
+        session['userId'] = None
+        return redirect(url_for('auth'))
+
     @app.route('/notActivated', methods=['GET', 'POST'])
     def notActivated():
         userId = session.get('userId')
