@@ -21,23 +21,24 @@
         <div class="content-section">
             <h1 class="title">Your account is not activated yet</h1>
             <p class="subtitle">Fill in the required fields and submit them for verification</p>
-            <form class="form-section">
+            <form class="form-section" action="/notActivated" method="POST">
                 <div class="input-row">
-                    <input type="text" class="styled-input" placeholder="First name" required>
-                    <input type="text" class="styled-input" placeholder="Last name" required>
-                    <input type="date" class="styled-input" placeholder="Date of birth" required>
+                    <input type="text" name="firstName" class="styled-input" placeholder="First name" required>
+                    <input type="text" name="lastName" class="styled-input" placeholder="Last name" required>
+                    <input type="date" name="birth" class="styled-input" placeholder="Date of birth" required>
 
                 </div>
                 <div class="input-row">
-                    <input type="text" class="styled-input" placeholder="Country of residence" required>
-                    <input type="text" class="styled-input" placeholder="City" required>
-                    <input type="text" class="styled-input" placeholder="Street" required>
+                    <input type="text" name="ctResidence" class="styled-input" placeholder="Country of residence" required>
+                    <input type="text" name="ct" class="styled-input" placeholder="City" required>
+                    <input type="text" name="street" class="styled-input" placeholder="Street" required>
                 </div>
                 <div class="input-row">
-                    <input type="tel" class="styled-input" placeholder="Phone number" required>
-                    <input type="text" class="styled-input" placeholder="Marital status" required>
-                    <input type="number" class="styled-input" placeholder="Annual salary" required>
+                    <input type="text" name="phone" class="styled-input" placeholder="Phone number" required>
+                    <input type="text" name="status" class="styled-input" placeholder="Marital status" required>
+                    <input type="number" name="salary" class="styled-input" placeholder="Annual salary" required>
                 </div>
+                <input type="hidden" name="form_type" value="auth">
                 <button type="submit" class="styled-button">Submit data</button>
             </form>
         </div>
