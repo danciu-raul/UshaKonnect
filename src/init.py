@@ -2,7 +2,7 @@ import os
 import random
 from flask import Flask, render_template, request, flash, redirect, url_for, session
 from src.instance import db
-from src.models.register import insertUser, getUserByEmail, checkIfUserAlreadyExists
+from src.models.register import insertUser, getUserByEmail, checkIfUserAlreadyExists, finishAuth
 from src.models.login import isUserRegistered
 from src.models.home import getHistoryByCardId, insertCard, insertHistory, getUserId, getCardNumber, getBalance, getExpiration, getCardId, updateBalance
 
@@ -108,8 +108,25 @@ def create_app(test_config=None):
     def admin():
         return render_template('pages/admin.html')
 
-    @app.route('/notActivated')
+    @app.route('/notActivated', methods=['GET', 'POST'])
     def notActivated():
+        userId = session.get('userId')
+
+        if request.method == 'POST':
+            form_type = request.form.get('form_type')
+
+            if form_type == 'auth':
+                lastName = request.form.get('lastName')
+                birth = request.form.get('birth')
+                ctResidence = request.form.get('ctResidence')
+                ct = request.form.get('ct')
+                street = request.form.get('street')
+                phone = request.form.get('phone')
+                status = request.form.get('status')
+                salary = request.form.get('salary')
+                finishAuth(lastName, birth, ctResidence, ct, street, phone, status, salary, userId)
+                
+         
         return render_template('pages/notActivated.html')
 
     return app

@@ -23,4 +23,14 @@ def checkIfUserAlreadyExists(name, email, password):
     else:
         return False
 
-
+def finishAuth(lastName, birth, city_residence, city, street, phone, status, salary, user_id):
+    db = get_db()
+    db.execute(
+        '''
+        UPDATE users
+        SET last_name = ?, date_of_birth = ?, residence_country = ?, city = ?, street = ?, phone_number = ?, marital_status = ?, annual_salary = ?
+        WHERE id = ?
+        ''',
+        (lastName, birth, city_residence, city, street, phone, status, salary, user_id)
+    )
+    db.commit()
