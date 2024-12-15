@@ -100,23 +100,7 @@ body {
     margin-bottom: 20px;
 }
 
-.view-info {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: 2px solid white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.view-info:hover {
-    background-color: white;
-    color: black;
-}
-
-.admin-panel h1 {
+admin-panel h1 {
     font-size: 36px;
     margin: 0;
 }

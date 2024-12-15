@@ -17,22 +17,25 @@
             </div>
         </div>
     </nav>
-    <div class="admin-container full-screen">
+    <div class="admin-container">
         <div class="header-info">
             <h1 class="greeting">Hello, Admin!</h1>
-            <button class="info-button">View your information</button>
         </div>
         <p class="intro">To find a client, please type one of the following information:</p>
         <div class="search-section">
             <div class="input-group">
                 <h2>Find a physical person:</h2>
-                <input type="text" class="styled-input" placeholder="First Name">
-                <input type="text" class="styled-input" placeholder="Last Name">
-                <input type="text" class="styled-input" placeholder="Date of Birth">
+                <form action="/admin" method="POST">
+                    <input name="firstName" type="text" class="styled-input" placeholder="First Name">
+                    <input name="lastName" type="text" class="styled-input" placeholder="Last Name">
+                    <input name="birth" type="text" class="styled-input" placeholder="Date of Birth">
+                </form>
             </div>
             <div class="input-group">
                 <h2>Find a person by a unique identifier:</h2>
-                <input type="text" class="styled-input" placeholder="Root">
+                <form>
+                    <input type="text" class="styled-input" placeholder="Root">
+                </form>
             </div>
             <button class="info-button">SEARCH</button>
         </div>

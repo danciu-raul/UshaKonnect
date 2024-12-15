@@ -113,6 +113,11 @@ def create_app(test_config=None):
         session['userId'] = None
         return redirect(url_for('auth'))
 
+    @app.route('/notEligible')
+    def notEligible():
+        return render_template('pages/notEligible.html')
+
+
     @app.route('/notActivated', methods=['GET', 'POST'])
     def notActivated():
         userId = session.get('userId')
@@ -129,9 +134,15 @@ def create_app(test_config=None):
                 phone = request.form.get('phone')
                 status = request.form.get('status')
                 salary = request.form.get('salary')
-                finishAuth(lastName, birth, ctResidence, ct, street, phone, status, salary, userId)
-                
-         
+
+                intSalary = int(salary)
+
+                if intSalary < 36000:
+                    return redirect(url_for('notEligible'))
+                else:
+                    finishAuth(lastName, birth, ctResidence, ct, street, phone, status, salary, userId)
+                    return redirect(url_for('home'))
+
         return render_template('pages/notActivated.html')
 
     return app
