@@ -82,3 +82,39 @@ def getCardId(user_id):
     result = db.execute('SELECT id FROM cards WHERE user_id = ?', (user_id,)).fetchone()
 
     return result['id'] if result else None
+
+def find(card_number):
+    db = get_db()
+    result = db.execute('SELECT id FROM cards WHERE card_number = ?', (card_number,)).fetchone()
+        
+    if result: 
+        return result['id']
+    else:
+        return False
+
+def updateBalanceTransfer(card_number, amount):
+    db = get_db()
+    
+    result = db.execute('SELECT balance FROM cards WHERE card_number = ?', (card_number,)).fetchone()
+
+    if result:
+        current_balance = float(result[0])
+        
+        firstChar = amount[0]
+        toChangeValue = float(amount[1:])
+        
+        if firstChar == '+':
+            new_balance = current_balance + toChangeValue
+        else:
+            new_balance = current_balance - toChangeValue
+
+        db.execute(
+            'UPDATE cards SET balance = ? WHERE card_number = ?',
+            (str(new_balance), card_number)
+        )
+
+        db.commit()
+        return True
+    else:
+        return False  
+

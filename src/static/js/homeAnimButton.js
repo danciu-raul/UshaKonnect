@@ -40,6 +40,18 @@ function handleCloseMenu() {
   menu.style.display = 'none'
 }
 
+const menu = document.querySelector('.popup-menu2');
+function handleMenu2() {
+
+  menu.style.display = 'block';
+}
+
+function handleCloseMenu2() {
+  const menu = document.querySelector('.popup-menu2');
+
+  menu.style.display = 'none'
+}
+
 function notifhandle() {
   const menu = document.querySelector('.dropdown-menu');
 
