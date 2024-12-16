@@ -6,26 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Cards - UshaKonnect</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
     <nav class="navbar">
         <div class="navbar-container">
-          <img src="{{ url_for('static', filename='images/UshaKonnect.png') }}" alt="Logo" class="logo">
-          <h1 class="navbar-name">UshaKonnect</h1>
-          <div class="nav-icons">
-          {% if user['date_of_birth'] %}
-            <img src="{{ url_for('static', filename='images/notification.png') }}" alt="Logo" class="notif" >
-          {% else %}
-            <img src="{{ url_for('static', filename='images/notificationNR.png') }}" alt="Logo" class="notif" onclick="notifhandle()">
-            <div class="dropdown-menu">
-              <a class="notiflg" onclick="window.location.href='{{ url_for('notActivated') }}'" >Activate your account</a>
-          </div>
-          {% endif %}
-            <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logo" class="logout" onclick="window.location.href='{{ url_for('logout') }}'">
-          </div>
+            <img src="{{ url_for('static', filename='images/UshaKonnect.png') }}" alt="Logo" class="logo">
+            <h1 class="navbar-name">UshaKonnect</h1>
+            <div class="nav-icons">
+                {% if user['date_of_birth'] %}
+                    <img src="{{ url_for('static', filename='images/notification.png') }}" alt="Logo" class="notif">
+                {% else %}
+                    <img src="{{ url_for('static', filename='images/notificationNR.png') }}" alt="Logo" class="notif" onclick="notifhandle()">
+                    <div class="dropdown-menu">
+                        <a class="notiflg" onclick="window.location.href='{{ url_for('notActivated') }}'">Activate your account</a>
+                    </div>
+                {% endif %}
+                <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logo" class="logout" onclick="window.location.href='{{ url_for('logout') }}'">
+            </div>
         </div>
     </nav>
+
     <div class="content">
         <div class="card-section">
             <div class="mycard">
@@ -34,11 +36,11 @@
 
             <div class="card">
                 <div class="card-details">
-                    <div class ="top-details">
-                      <img src="{{ url_for('static', filename='images/UshaKonnect.png') }}" alt="Logo" class="details-logo">
-                      <p class="eur">EUR</p>
+                    <div class="top-details">
+                        <img src="{{ url_for('static', filename='images/UshaKonnect.png') }}" alt="Logo" class="details-logo">
+                        <p class="eur">EUR</p>
                     </div>
-                    <p class="card-number">{{ cardNumber }}</p> 
+                    <p class="card-number">{{ cardNumber }}</p>
                     <p class="expiry">{{ expiration }}</p>
                     <div class="card-info">
                         <p class="balance">{{ balance }}€</p>
@@ -51,8 +53,6 @@
                 <button class="transfer-funds">Transfer Funds</button>
                 <button class="transfer-funds" onclick="handleMenu()">Add Transaction</button>
             {% endif %}
-
-            
         </div>
 
         <div id="popupMenu" class="popup-menu">
@@ -62,12 +62,12 @@
                 <div class="dates">
                     <input name="date" class="date" type="date" required>
                     <input name="time" class="time" type="time" required>
-              </div>
-              <input name="amount" type="text" placeholder="+/-50" required>
-              <input type="hidden" name="form_type" value="transaction">
-              <div class="submit">
-                  <button id="sendBtn">Submit</button>
-              </div>
+                </div>
+                <input name="amount" type="text" placeholder="+/-50" required>
+                <input type="hidden" name="form_type" value="transaction">
+                <div class="submit">
+                    <button id="sendBtn">Submit</button>
+                </div>
             </form>
         </div>
 
@@ -76,7 +76,7 @@
                 <button class="btn-transaction" onclick="handleTransactionClick()">Transactions</button>
                 <button class="btn-stat" onclick="handleStatClick()">Statistics</button>
             </div>
-            
+
             <div class="transactions">
                 <div class="transaction-list">
                     {% for transaction in transactions | reverse %}
@@ -85,16 +85,137 @@
                         <span>{{ transaction['execution_hour'] }}</span>
                         <span>{{ transaction['destination'] }}</span>
                         <span class="amount {% if transaction['amount'].startswith('-') %}negative{% else %}positive{% endif %}">{{ transaction['amount'] }}</span>
-                  </div>
-                {% endfor %}
-              </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
-                       
+
             <div class="statistics" id="statdiv" style="display: none;">
-              <h1>Some stats ...</h1>
+                <canvas id="earningsChart" width="400" height="200"></canvas>
+                <canvas id="expensesChart" width="400" height="200"></canvas>
             </div>
         </div>
     </div>
-  <script src="../../static/js/homeAnimButton.js"></script>
+
+    <script>
+        const transactions = {{ transactions | tojson }};
+        const currentMonth = new Date().getMonth() + 1;
+        let earnings = 0;
+        let expenses = 0;
+        let earningsData = [];
+        let expensesData = [];
+        let labels = [];
+
+        transactions.forEach(transaction => {
+            const date = new Date(transaction.execution_date);
+            const day = date.getDate();
+
+            if (date.getMonth() + 1 === currentMonth) {
+                const amount = parseFloat(transaction.amount);
+                labels.push(day);
+
+                if (amount > 0) {
+                    earnings += amount;
+                    earningsData.push(amount);
+                    expensesData.push(0);
+                } else {
+                    expenses += Math.abs(amount);
+                    expensesData.push(Math.abs(amount));
+                    earningsData.push(0);
+                }
+            }
+        });
+
+        // Chart.js configuration for earnings
+        const ctx1 = document.getElementById('earningsChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Earnings (€)',
+                    data: earningsData,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 1)',
+                        },
+                        title: {
+                            display: true,
+                            text: "Amount Spent",
+                            color: 'rgba(255, 255, 255, 1)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Days of the Month",
+                            color: 'rgba(255, 255, 255, 1)'
+                        },
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 1)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart.js configuration for expenses
+        const ctx2 = document.getElementById('expensesChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Expenses (€)',
+                    data: expensesData,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 1)',
+                        },
+                        title: {
+                            display: true,
+                            text: "Amount Spent",
+                            color: 'rgba(255, 255, 255, 1)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Days of the Month",
+                            color: 'rgba(255, 255, 255, 1)'
+                        },
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 1)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Function to show statistics
+        function handleStatClick() {
+            document.getElementById('transactions').style.display = 'none';
+            document.getElementById('statdiv').style.display = 'block';
+        }
+    </script>
+
+    <script src="../../static/js/homeAnimButton.js"></script>
 </body>
+
 </html>
