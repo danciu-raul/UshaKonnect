@@ -1,11 +1,12 @@
 import os
+from datetime import datetime
 import random
 import json
 from flask import Flask, render_template, request, flash, redirect, url_for, session
 from src.instance import db
 from src.models.register import insertUser, getUserByEmail, checkIfUserAlreadyExists, finishAuth
 from src.models.login import isUserRegistered
-from src.models.home import getHistoryByCardId, insertCard, insertHistory, getUserId, getCardNumber, getBalance, getExpiration, getCardId, updateBalance
+from src.models.home import getHistoryByCardId, insertCard, insertHistory, getUserId, getCardNumber, getBalance, getExpiration, getCardId, updateBalance, find, updateBalanceTransfer
 from src.models.admin import getUserInfos, getUserInfosUid, getCardInfos
 
 def create_app(test_config=None):
@@ -80,6 +81,30 @@ def create_app(test_config=None):
         expiration = getExpiration(userId)
         balance = getBalance(userId)
         cardId = getCardId(userId)
+
+
+        if request.method == 'POST':
+            form_type = request.form.get('form_type')
+
+            if form_type == 'transfer':
+                transferName = request.form.get('name')
+                transferCard = request.form.get('cardNumber')
+                amounttr = request.form.get('amount')
+                transferAmount = "-" + amounttr
+                transferAmount2 = "+" + amounttr
+                
+                exists = find(transferCard)
+                    
+                if exists:
+                    current_date = datetime.now().date()
+                    current_time = datetime.now().strftime('%H:%M')
+                    #from
+                    insertHistory(current_date, current_time, transferName, transferAmount, cardId )
+                    updateBalanceTransfer(transferCard, transferAmount2)
+                    balance = updateBalance(cardId, transferAmount, balance)
+                    #To
+                    insertHistory(current_date, current_time, user_info['first_name'], transferAmount2, exists)
+
 
         if request.method == 'POST':
             form_type = request.form.get('form_type')

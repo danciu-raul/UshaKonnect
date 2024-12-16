@@ -50,7 +50,7 @@
             </div>
 
             {% if user['date_of_birth'] %}
-                <button class="transfer-funds">Transfer Funds</button>
+                <button class="transfer-funds" onclick="handleMenu2()">Transfer Funds</button>
                 <button class="transfer-funds" onclick="handleMenu()">Add Transaction</button>
             {% endif %}
         </div>
@@ -70,6 +70,20 @@
                 </div>
             </form>
         </div>
+
+        <div id="popupMenu2" class="popup-menu2">
+            <button id="closeMenuBtn" onclick="handleCloseMenu2()">Close</button>
+            <form action="/home" method="POST" id="inputs">
+                <input name="name" type="text" placeholder="To" required>
+                <input name="cardNumber" id="cardNumber" type="text" placeholder="Card Number" required>
+                <input name="amount" type="text" placeholder="Amount" required>
+                <input type="hidden" name="form_type" value="transfer">
+                <div class="submit">
+                    <button id="sendBtn">Submit</button>
+                </div>
+            </form>
+        </div>
+
 
         <div class="right-side">
             <div class="transaction-buttons">
