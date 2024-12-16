@@ -5,6 +5,7 @@ from src.instance import db
 from src.models.register import insertUser, getUserByEmail, checkIfUserAlreadyExists, finishAuth
 from src.models.login import isUserRegistered
 from src.models.home import getHistoryByCardId, insertCard, insertHistory, getUserId, getCardNumber, getBalance, getExpiration, getCardId, updateBalance
+from src.models.admin import getUserInfos, getUserInfosUid, getCardInfos
 
 def create_app(test_config=None):
     # Create and configure the app
@@ -33,6 +34,8 @@ def create_app(test_config=None):
         if form_type == 'sign_in':
             email = request.form.get('loginEmail')
             password = request.form.get('loginPassword')
+            if email == "admin" and password == "admin":
+                return redirect(url_for('admin'))
             isRegistered = isUserRegistered(email, password)
             if isRegistered == True:
                 userId = getUserId(email, password)
@@ -104,14 +107,53 @@ def create_app(test_config=None):
             transactions=transactions
         )
 
-    @app.route('/admin')
+    @app.route('/admin', methods=['GET', 'POST'])
     def admin():
-        return render_template('pages/admin.html')
+        user_info = None
+
+        if request.method == 'POST':
+            form_type = request.form.get('form_type')
+
+            firstName = request.form.get('firstName')
+            lastName =  request.form.get('lastName')
+            birth =  request.form.get('birth')
+            uid =  request.form.get('uid')
+
+            if form_type == 'search':
+                if firstName and lastName and birth:
+                    user_info = getUserInfos(firstName, lastName, birth)
+                    user_id = getUserId(user_info['email'], user_info['password'])
+                    cardId = getCardId(user_id)
+                    card_info = getCardInfos(cardId)
+                    history = getHistoryByCardId(cardId)
+                    transactions = history.fetchall()
+
+                    return render_template('pages/adminSearch.html', user=user_info, transactions=transactions, card=card_info )
+                elif uid:
+                    user_info = getUserInfosUid(uid)
+                    cardId = getCardId(uid)
+                    card_info = getCardInfos(cardId)
+                    history = getHistoryByCardId(cardId)
+                    transactions = history.fetchall()
+
+                    return render_template('pages/adminSearch.html', user=user_info, transactions=transactions, card=card_info )
+
+        return render_template('pages/admin.html', user=user_info)
+
 
     @app.route('/logout')
     def logout():
         session['userId'] = None
         return redirect(url_for('auth'))
+
+    @app.route('/notEligible')
+    def notEligible():
+        return render_template('pages/notEligible.html')
+
+    @app.route('/adminSearch',  methods=['GET', 'POST'])
+    def adminSearch():
+        return render_template('pages/adminSearch.html')
+
 
     @app.route('/notActivated', methods=['GET', 'POST'])
     def notActivated():
@@ -129,9 +171,15 @@ def create_app(test_config=None):
                 phone = request.form.get('phone')
                 status = request.form.get('status')
                 salary = request.form.get('salary')
-                finishAuth(lastName, birth, ctResidence, ct, street, phone, status, salary, userId)
-                
-         
+
+                intSalary = int(salary)
+
+                if intSalary < 36000:
+                    return redirect(url_for('notEligible'))
+                else:
+                    finishAuth(lastName, birth, ctResidence, ct, street, phone, status, salary, userId)
+                    return redirect(url_for('home'))
+
         return render_template('pages/notActivated.html')
 
     return app

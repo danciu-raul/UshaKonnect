@@ -12,30 +12,35 @@
             <img src="{{ url_for('static', filename='images/UshaKonnect.png') }}" alt="Logo" class="logo">
             <h1 class="navbar-name">UshaKonnect</h1>
             <div class="nav-icons">
-                <img src="{{ url_for('static', filename='images/notification.png') }}" alt="Notification" class="notif">
-                <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout">
+                <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logo" class="logout" onclick="window.location.href='{{ url_for('logout') }}'">
             </div>
         </div>
     </nav>
-    <div class="admin-container full-screen">
-        <div class="header-info">
-            <h1 class="greeting">Hello, Admin!</h1>
-            <button class="info-button">View your information</button>
-        </div>
-        <p class="intro">To find a client, please type one of the following information:</p>
+    
+    <div class="header-info">
+      <h1 class="greeting">Hello, Admin!</h1>
+      <p class="intro">To find a client, please type one of the following information:</p>
+    </div>
+
+    <div class="admin-container">
         <div class="search-section">
+          <form method="POST">
             <div class="input-group">
                 <h2>Find a physical person:</h2>
-                <input type="text" class="styled-input" placeholder="First Name">
-                <input type="text" class="styled-input" placeholder="Last Name">
-                <input type="text" class="styled-input" placeholder="Date of Birth">
+                    <input name="firstName" type="text" class="styled-input" placeholder="First Name">
+                    <input name="lastName" type="text" class="styled-input" placeholder="Last Name">
+                    <input name="birth" type="date" class="styled-input" placeholder="Date of Birth">
             </div>
             <div class="input-group">
                 <h2>Find a person by a unique identifier:</h2>
-                <input type="text" class="styled-input" placeholder="Root">
+                <input name="uid" type="text" class="styled-input" placeholder="Root">
             </div>
-            <button class="info-button">SEARCH</button>
-        </div>
+
+            <input type="hidden" name="form_type" value="search" >
+            <button class="info-button" onclick="handleMenu()" >SEARCH</button>
+        </form>
+      </div>
     </div>
+    
 </body>
 </html>
