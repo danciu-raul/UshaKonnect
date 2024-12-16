@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - UshaKonnect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adminSearch.css') }}">
+</head>
+<body>
+  <div id="popupMenu" class="popup-menu">
+
+      {% if user['date_of_birth'] %}
+          <h1>User Details</h1>
+          <p>Name: {{ user['first_name'] }} {{ user['last_name'] }}</p>
+          <p>Date of Birth: {{ user['date_of_birth'] }}</p>
+          <p>Email: {{ user['email'] }}</p>
+          <p>Residence Country: {{ user['residence_country'] }}</p>
+          <p>City: {{ user['city'] }}</p>
+          <p>Street: {{ user['street'] }}</p>
+          <p>Phone number: {{ user['phone_number'] }}</p>
+          <p>Marital status: {{ user['marital_status'] }}</p>
+          <p>annual salary: {{ user['annual_salary'] }}</p>
+          <h1>Card informations</h1>
+          <p>Card number: {{ card['card_number'] }}</p>
+          <p>Card expiration: {{ card['expiration'] }}</p>
+          <p>Card balance: {{ card['balance'] }}€</p>
+          <h1>Transactions</h1>
+          {% for transaction in transactions | reverse %}
+            <div class="transaction {% if loop.index == 1 %}today{% endif %}">
+                        <span>{{ transaction['execution_date'] }}</span>
+                        <span>{{ transaction['execution_hour'] }}</span>
+                        <span>{{ transaction['destination'] }}</span>
+                        <span class="amount {% if transaction['amount'].startswith('-') %}negative{% else %}positive{% endif %}">{{ transaction['amount'] }}</span>
+            </div>
+          {% endfor %}
+      {% elif user %}
+          <h1>User not activated</h1>
+          <p>Name: {{ user['first_name'] }}</p>
+          <p>Email: {{ user['email'] }}</p>
+      {% else %}
+          <h1>User Not Found</h1>
+      {% endif %}
+      </div>
+
+      <script src="../../static/js/adminAnimation.js"></script>
+    
+  
+    
+</body>
+</html>
+
+
+

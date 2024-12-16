@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom left, rgba(0, 0, 0, 1) 10%, rgba(198, 153, 7, 0.8109) 53%, rgba(0, 0, 0, 0.67) 86%),
+    linear-gradient(to top right, rgba(0, 0, 0, 1) 10%, rgba(198, 153, 7, 0.8109) 53%, rgba(0, 0, 0, 0.67) 86%);
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.popup-menu {
+  width: 50%;
+  margin-left: 20px;
+  background-color: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  max-height: 100vh;
+  overflow-y: auto;
+  color: white;
+}
+
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.amount {
+  font-weight: bold;
+}
+
+.negative {
+  color: red;
+}
+
+.positive {
+  color: green;
+}
