@@ -73,7 +73,8 @@ def create_app(test_config=None):
         userId = session.get('userId')  # Get userId from session
         if userId is None:
             return redirect(url_for('auth'))
-
+        
+        user_info = getUserInfosUid(userId)
         cardNumber = getCardNumber(userId)
         expiration = getExpiration(userId)
         balance = getBalance(userId)
@@ -104,7 +105,8 @@ def create_app(test_config=None):
             cardNumber=cardNumber,
             expiration=expiration,
             balance=balance,
-            transactions=transactions
+            transactions=transactions,
+            user=user_info
         )
 
     @app.route('/admin', methods=['GET', 'POST'])

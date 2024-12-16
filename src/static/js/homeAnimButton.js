@@ -39,3 +39,10 @@ function handleCloseMenu() {
 
   menu.style.display = 'none'
 }
+
+function notifhandle() {
+  const menu = document.querySelector('.dropdown-menu');
+
+  const isVisible = menu.style.display === 'block';
+  menu.style.display = isVisible ? 'none' : 'block';
+}

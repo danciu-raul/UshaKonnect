@@ -64,6 +64,13 @@ body {
     border-bottom-left-radius: 70px;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
 .signinR {
     display: flex;
     flex-direction: column;
@@ -107,7 +114,9 @@ input {
 }
 
 .forgot-password {
-    display: block;
+    display: flex;
+    justify-content:center;
+    align-items:center;
     margin: 10px 0;
     color: rgb(255,255,255);
     text-decoration: none;
@@ -124,8 +133,10 @@ input {
     font-size: 16px;
     border-radius: 20px;
     transition: background-color 0.3s, color 0.3s;
-    align-items: center;
     font-weight: bold;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .signin-buttonR {
@@ -142,6 +153,7 @@ input {
     align-items: center;
     font-weight: bold;
     margin: 30px;
+    justify-content:center;
 }
 
 .signup-button {

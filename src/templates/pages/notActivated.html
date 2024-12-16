@@ -9,12 +9,8 @@
 <body>
     <nav class="navbar">
         <div class="navbar-container">
-            <img src="{{ url_for('static', filename='images/UshaKonnect.png') }}" alt="Logo" class="logo">
+            <img src="{{ url_for('static', filename='images/UshaKonnect.png') }}" alt="Logo" class="logo" onclick="window.location.href='{{ url_for('home') }}'">
             <h1 class="navbar-name">UshaKonnect</h1>
-            <div class="nav-icons">
-                <img src="{{ url_for('static', filename='images/notification.png') }}" alt="Notification" class="notif">
-                <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logout" class="logout">
-            </div>
         </div>
     </nav>
     <div class="not-activated-container">

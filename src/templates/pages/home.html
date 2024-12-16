@@ -14,7 +14,14 @@
           <img src="{{ url_for('static', filename='images/UshaKonnect.png') }}" alt="Logo" class="logo">
           <h1 class="navbar-name">UshaKonnect</h1>
           <div class="nav-icons">
-            <img src="{{ url_for('static', filename='images/notification.png') }}" alt="Logo" class="notif" onclick="window.location.href='{{ url_for('notActivated') }}'">
+          {% if user['date_of_birth'] %}
+            <img src="{{ url_for('static', filename='images/notification.png') }}" alt="Logo" class="notif" >
+          {% else %}
+            <img src="{{ url_for('static', filename='images/notificationNR.png') }}" alt="Logo" class="notif" onclick="notifhandle()">
+            <div class="dropdown-menu">
+              <a class="notiflg" onclick="window.location.href='{{ url_for('notActivated') }}'" >Activate your account</a>
+          </div>
+          {% endif %}
             <img src="{{ url_for('static', filename='images/logout.png') }}" alt="Logo" class="logout" onclick="window.location.href='{{ url_for('logout') }}'">
           </div>
         </div>
@@ -23,7 +30,6 @@
         <div class="card-section">
             <div class="mycard">
                 <h1 class="mycardH1">My cards</h1>
-                <button class="add-card">Add new Card</button>
             </div>
 
             <div class="card">
@@ -41,8 +47,12 @@
                 </div>
             </div>
 
-            <button class="transfer-funds">Transfer Funds</button>
-            <button class="transfer-funds" onclick="handleMenu()">Add Transaction</button>
+            {% if user['date_of_birth'] %}
+                <button class="transfer-funds">Transfer Funds</button>
+                <button class="transfer-funds" onclick="handleMenu()">Add Transaction</button>
+            {% endif %}
+
+            
         </div>
 
         <div id="popupMenu" class="popup-menu">

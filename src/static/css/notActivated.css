@@ -1,90 +1,61 @@
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom left, rgba(0, 0, 0, 1) 10%, rgba(198, 153, 7, 0.8109) 53%, rgba(0, 0, 0, 0.67) 86%),
-    linear-gradient(to top right, rgba(0, 0, 0, 1) 10%, rgba(198, 153, 7, 0.8109) 53%, rgba(0, 0, 0, 0.67) 86%);
-    color: white;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    overflow: hidden; /* Remove scrollbars */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom left, rgba(0, 0, 0, 1) 10%, rgba(198, 153, 7, 0.8109) 53%, rgba(0, 0, 0, 0.67) 86%),
+  linear-gradient(to top right, rgba(0, 0, 0, 1) 10%, rgba(198, 153, 7, 0.8109) 53%, rgba(0, 0, 0, 0.67) 86%);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  justify-content:center;
+  align-items:center;
 }
 
 .logo {
-    top: 20px;
-    left: 40px;
-    width: 40px;
-    height: auto;
-    margin-right: 10px;
-  }
-  
-  .notif{
-    color: white;
-    top: 20px;
-    width: 20px;
-    height: auto;
-    margin-right: 30px;
-  }
-  
-  .logout {
-    color: white;
-    top: 20px;
-    width: 20px;
-    height: auto;
-  }
-  
-  .nav-icons {
-    margin-left: auto;
-    margin-right: 80px;
-  }
-  
-  .details-logo {
-    width: 30px;
-    height: auto;
-  }
-  
-  .eur {
-    margin-left:auto;
-    color: #888;
-    font-size: 12px;
-  }
-  
-  .top-details {
-    flex-direction: row;
-    align-items: center;
-    display: flex;
-    margin-bottom: 60px;
-  }
-  
-  .navbar {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px 20px;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    height: 30px;
-    margin-bottom: 20px;
-  }
-  
-  .navbar-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  
-  .navbar-name {
-    color: white;
-    font-size: 18px;
-    margin: 0;
-  }
-.nav-icons img {
-    width: 20px;
-    height: auto;
-    margin-left: 20px;
+  top: 20px;
+  left: 40px;
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
 }
+
+.logout {
+  color: white;
+  top: 20px;
+  width: 20px;
+  height: auto;
+}
+
+.nav-icons {
+  margin-left: auto;
+  margin-right: 80px;
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 30px;
+  margin-bottom: 20px;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.navbar-name {
+  color: white;
+  font-size: 18px;
+  margin: 0;
+}
+
+
 
 .not-activated-container {
     display: flex;
