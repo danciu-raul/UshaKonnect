@@ -1,5 +1,6 @@
 import os
 import random
+import json
 from flask import Flask, render_template, request, flash, redirect, url_for, session
 from src.instance import db
 from src.models.register import insertUser, getUserByEmail, checkIfUserAlreadyExists, finishAuth
@@ -99,13 +100,13 @@ def create_app(test_config=None):
         balance = getBalance(userId)
         history = getHistoryByCardId(cardId)
         transactions = history.fetchall()
-
+        transactions_list = [dict(row) for row in transactions]
         return render_template(
             'pages/home.html',
             cardNumber=cardNumber,
             expiration=expiration,
             balance=balance,
-            transactions=transactions,
+            transactions=transactions_list,
             user=user_info
         )
 
