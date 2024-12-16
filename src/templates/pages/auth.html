@@ -5,15 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
     <title>Sign In</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none; /* Hidden by default */
+        }
+    </style>
 </head>
 <body>
- <img src="{{ url_for('static', filename='images/UshaKonnect.png') }}" alt="Logo" class="logo">
+    <img src="{{ url_for('static', filename='images/UshaKonnect.png') }}" alt="Logo" class="logo">
     <div class="loginContainer">
         <div class="signinL">
             <h1>Sign In</h1>
-            <form action="/" method="POST">
-              <input name="loginEmail" type="text" placeholder="Email" required>
-              <input name="loginPassword" type="password" placeholder="Password" required>
+            <form id="signInForm" action="/" method="POST" onsubmit="return validateSignIn()">
+              <input id="loginEmail" name="loginEmail" type="text" placeholder="Email">
+              <span id="emailError" class="error">Email is required.</span>
+              <input id="loginPassword" name="loginPassword" type="password" placeholder="Password">
+              <span id="passwordError" class="error">Password is required.</span>
               <input type="hidden" name="form_type" value="sign_in">
               <button class="signin-button">SIGN IN</button>
             </form>
@@ -21,28 +31,93 @@
         <div class="signupL">
             <h2>Hello!</h2>
             <p>Not registered, create an account here.</p>
-            <button class="signup-button" onclick="toggleSignUp()" >SIGN UP</button>
+            <button class="signup-button" onclick="toggleSignUp()">SIGN UP</button>
             <script src="../../static/js/slide.js"></script>
         </div>
     </div>
 
     <div class="signupContainer" id="sigupCT" style="display: none;">
-      <div class="signupR">
+        <div class="signupR">
             <h2>Hello!</h2>
             <p>If you already have an account, sign in here.</p>
             <button class="signup-button" onclick="toggleSignIn()">SIGN IN</button>
-            <script src="../../static/js/slide.js"></script>
         </div>
         <div class="signinR">
             <h1>Sign Up</h1>
-            <form action="/" method="POST">
-              <input type="text" name="registerName" id="name" placeholder="Name" required>
-              <input type="text" name="registerEmail" id="email" placeholder="Email" required>
-              <input type="password" name="registerPassword" id="password" placeholder="Password" required>
+            <form id="signUpForm" action="/" method="POST" onsubmit="return validateSignUp()">
+              <input id="registerName" type="text" name="registerName" placeholder="Name">
+              <span id="nameError" class="error">Name is required.</span>
+              <input id="registerEmail" type="text" name="registerEmail" placeholder="Email">
+              <span id="registerEmailError" class="error">Email is required.</span>
+              <input id="registerPassword" type="password" name="registerPassword" placeholder="Password">
+              <span id="registerPasswordError" class="error">Password is required.</span>
               <input type="hidden" name="form_type" value="sign_up">
               <button class="signin-buttonR">SIGN UP</button>
             </form>
         </div> 
     </div>
+
+    <script>
+        function validateSignIn() {
+            let isValid = true;
+
+            const email = document.getElementById("loginEmail").value.trim();
+            const password = document.getElementById("loginPassword").value.trim();
+
+            const emailError = document.getElementById("emailError");
+            const passwordError = document.getElementById("passwordError");
+
+            if (email === "") {
+                emailError.style.display = "block";
+                isValid = false;
+            } else {
+                emailError.style.display = "none";
+            }
+
+            if (password === "") {
+                passwordError.style.display = "block";
+                isValid = false;
+            } else {
+                passwordError.style.display = "none";
+            }
+
+            return isValid;
+        }
+
+        function validateSignUp() {
+            let isValid = true;
+
+            const name = document.getElementById("registerName").value.trim();
+            const email = document.getElementById("registerEmail").value.trim();
+            const password = document.getElementById("registerPassword").value.trim();
+
+            const nameError = document.getElementById("nameError");
+            const emailError = document.getElementById("registerEmailError");
+            const passwordError = document.getElementById("registerPasswordError");
+
+            if (name === "") {
+                nameError.style.display = "block";
+                isValid = false;
+            } else {
+                nameError.style.display = "none";
+            }
+
+            if (email === "") {
+                emailError.style.display = "block";
+                isValid = false;
+            } else {
+                emailError.style.display = "none";
+            }
+
+            if (password === "") {
+                passwordError.style.display = "block";
+                isValid = false;
+            } else {
+                passwordError.style.display = "none";
+            }
+
+            return isValid;
+        }
+    </script>
 </body>
 </html>

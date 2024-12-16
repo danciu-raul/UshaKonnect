@@ -60,10 +60,10 @@
             <form action="/home" method="POST" id="inputs">
                 <input name="name" type="text" placeholder="From/To" required>
                 <div class="dates">
-                    <input name="date" class="date" type="date">
-                    <input name="time" class="time" type="time">
+                    <input name="date" class="date" type="date" required>
+                    <input name="time" class="time" type="time" required>
               </div>
-              <input name="amount" type="text" placeholder="+/-50">
+              <input name="amount" type="text" placeholder="+/-50" required>
               <input type="hidden" name="form_type" value="transaction">
               <div class="submit">
                   <button id="sendBtn">Submit</button>
