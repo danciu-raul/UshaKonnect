@@ -98,7 +98,7 @@
                         <span>{{ transaction['execution_date'] }}</span>
                         <span>{{ transaction['execution_hour'] }}</span>
                         <span>{{ transaction['destination'] }}</span>
-                        <span class="amount {% if transaction['amount'].startswith('-') %}negative{% else %}positive{% endif %}">{{ transaction['amount'] }}</span>
+                        <span class="amount {% if transaction['amount'].startswith('-') %}negative{% else %}positive{% endif %}">{{ transaction['amount'] }}€<span>
                     </div>
                     {% endfor %}
                 </div>
